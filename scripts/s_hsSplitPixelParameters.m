@@ -21,8 +21,8 @@
 %%
 ieInit;
 
-% imageID = '1112201236'; % - Good one
-imageID = '1114091636';   % Red car, green car
+imageID = '1112201236'; % - Good one
+% imageID = '1114091636';   % Red car, green car
 
 %% Day scene weights
 
@@ -50,13 +50,12 @@ oi = oiSet(oi,'wvf zcoeffs',0,'defocus');
 
 %%  If you want the oiDay, this is how
 
-%{
 wgts = [0    0     0    100*0.5175]; % Day
 scene = hsSceneCreate(imageID,'weights',wgts,'denoise',false);
 oiDay = oiCompute(oi, scene,'aperture',aperture,'crop',true,'pixel size',3e-6);
-oiWindow(oiDay,'gamma',0.5,'render flag','rgb');
-srgb = oiGet(oiDay,'rgb'); ieNewGraphWin; image(srgb); truesize
-%}
+% oiWindow(oiDay,'gamma',0.5,'render flag','rgb');
+% srgb = oiGet(oiDay,'rgb'); ieNewGraphWin; image(srgb); truesize
+
 
 %% Night scene weights
 
@@ -64,10 +63,10 @@ srgb = oiGet(oiDay,'rgb'); ieNewGraphWin; image(srgb); truesize
 
 % Experimenting with how dark.  4 log units down gets night
 % But three really doesn't.
-wgts    = [0.2306    0.0012    0.0001    1e-2*0.5175]; % Night
-scene   = hsSceneCreate(imageID,'weights',wgts,'denoise',true);
-oiNight = oiCompute(oi, scene,'aperture',aperture,'crop',true,'pixel size',3e-6);
-oiWindow(oiNight,'render flag','rgb','gamma',0.2);
+% wgts    = [0.2306    0.0012    0.0001    1e-2*0.5175]; % Night
+% scene   = hsSceneCreate(imageID,'weights',wgts,'denoise',false);
+% oiNight = oiCompute(oi, scene,'aperture',aperture,'crop',true,'pixel size',3e-6);
+% oiWindow(oiNight,'render flag','rgb','gamma',0.2);
 
 % save(sprintf('oiNight-%d',imageID),'oiNight');
 
@@ -80,12 +79,13 @@ oiWindow(oiNight,'render flag','rgb','gamma',0.2);
 
 pixelSize = 3e-6;
 sensorSize = [1082 1926];
-sensorArray = sensorCreateArray('array type','imx490',...
+arrayType = 'ovt';
+sensorArray = sensorCreateArray('array type', arrayType,...
     'pixel size same fill factor',pixelSize,...
     'exp time',16e-3, ...
     'size',sensorSize);
 
-sensorSplit = sensorComputeArray(sensorArray,oiNight);
+sensorSplit = sensorComputeArray(sensorArray,oiDay);
 % sensorWindow(sensorSplit,'gamma',0.3);
 %{
  rgb = sensorGet(sensorSplit,'rgb');
@@ -96,7 +96,7 @@ sensorSplit = sensorComputeArray(sensorArray,oiNight);
 
 ip = ipCreate;
 ip = ipCompute(ip,sensorSplit);
-ipWindow(ip,'render flag','rgb','gamma',0.3);
+% ipWindow(ip,'render flag','rgb','gamma',0.3);
 
 %% Here are some key parameters
 

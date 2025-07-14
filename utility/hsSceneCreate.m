@@ -54,21 +54,31 @@ fname = fullfile(p.Results.datadir,sprintf('HDR-scenes-%s.mat',imageID));
 if exist(fname,'file')
     load(fname,'scenes','sceneMeta');
 else
-    try
+    % try
         lgt = {'headlights','streetlights','otherlights','skymap'};
         destPath = fullfile(isethdrsensorRootPath,'data',imageID);
+        disp(destPath);
 
         scenes = cell(numel(lgt,1));
         for ll = 1:numel(lgt)
             thisFile = sprintf('%s_%s.exr',imageID,lgt{ll});
             destFile = fullfile(destPath,thisFile);
+
+            if exist(destFile, 'file')
+                sprintf('%s: File exists.', destFile);
+            else
+                sprintf('%s: File does not exist.', destFile);
+            end
+
             scenes{ll} = piEXR2ISET(destFile);
         end
         destPath = fullfile(isethdrsensorRootPath,'data',imageID);
         load(fullfile(destPath,[imageID,'.mat']),'sceneMeta');
-    catch
-        error('Light group ID %s not found in isethdrsensor/data.\n',imageID);
-    end
+    % catch ME
+    %     fprintf('Error ID: %s\n', ME.identifier);
+    %     fprintf('Message: %s\n', ME.message);
+    %     error('Light group ID %s not found in isethdrsensor/data.\n',imageID);
+    % end
 end
 
 %%  Combine them
