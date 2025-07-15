@@ -5,6 +5,7 @@
 % 
 % We simulate the ISET implementation of OVT's 
 % split pixel technology
+% Authored by Ayush Jamdar at Omnivision Technologies Inc. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Stage 0. Setup

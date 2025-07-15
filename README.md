@@ -98,3 +98,9 @@ This project is licensed under the [MIT License](LICENSE).
 ## Acknowledgments
 
 Special thanks to the developers of ISETCam, ISETAuto, and ISET3d for their invaluable tools that made this work possible.
+
+## Octave Support
+- July 14, 2025: Ayush Jamdar at Omnivision Technologies Inc.
+- We've modified EXR handling and other scripts in `isetcam` and `iset3d-tiny` that can read the light groups using OpenEXR and simulate the complete pipeline in GNU Octave. 
+- We have tested `isethdrsensor/scripts/fullSimulation.m` on examples from the ISET HDR dataset.
+
