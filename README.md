@@ -28,7 +28,7 @@ To run the neural network for denoising and demosaicing, you will also need to h
 
 ### Python libraries for RGBW rendering
 
-To run the demosaicing code, we need to install a Python environment within Matlab](https://github.com/ISET/isetcam/wiki/Related-software), and then add in the Python libraries specified in the file (isethdrsensor/utility/python/requirements.txt).  These libraries are used by the neural network code that performs the demosaicing and denoising here.
+To run the demosaicing code, we need to install an [ISECam Python environment within Matlab](https://github.com/ISET/isetcam/wiki/Related-software), and then add in the Python libraries specified in the file (isethdrsensor/utility/python/requirements.txt).  These libraries are used by the neural network code that performs the demosaicing and denoising here.
 
 To install the requirements, you can use
 ```
