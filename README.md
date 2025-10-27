@@ -10,6 +10,8 @@ keywords: {Sensors;Light sources;Lighting;Software;Image sensors;Intelligent sen
 
 Look at this [repository's Wiki](https://github.com/ISET/isethdrsensor/wiki) for scripts that create the images in that paper.
 
+The data for this paper is [shared on Stanford's Digital Repository](https://purl.stanford.edu/bt316kj3589)
+
 ## Dependencies
 
 ### Other ISET repositories
@@ -28,7 +30,7 @@ To run the neural network for denoising and demosaicing, you will also need to h
 
 ### Python libraries for RGBW rendering
 
-To run the demosaicing code, we need to install an [ISECam Python environment within Matlab](https://github.com/ISET/isetcam/wiki/Related-software), and then add in the Python libraries specified in the file (isethdrsensor/utility/python/requirements.txt).  These libraries are used by the neural network code that performs the demosaicing and denoising here.
+To run the demosaicing code, we need to install an [ISETCam Python environment within Matlab](https://github.com/ISET/isetcam/wiki/Related-software), and then add in the Python libraries specified in the file (isethdrsensor/utility/python/requirements.txt).  These libraries are used by the neural network code that performs the demosaicing and denoising here.
 
 To install the requirements, you can use
 ```
